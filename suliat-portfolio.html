@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Suliat Sulaiman — Educator · Coach · Changemaker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,400&family=Nunito+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+/* ── LETOREA-MATCHED PALETTE ── */
+:root {
+  --forest:     #0d3b30;
+  --forest2:    #0f4438;
+  --forest3:    #134d40;
+  --teal:       #1a7a6a;
+  --teal-btn:   #2a8a7a;
+  --teal-light: #3aaa96;
+  --orange:     #f07830;
+  --orange2:    #f59050;
+  --gold:       #e8a832;
+  --cream:      #f0f9f6;
+  --cream2:     #d8ede8;
+  --white:      #ffffff;
+  --muted:      #8ab8aa;
+  --light:      #b8d8ce;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Nunito Sans',sans-serif;background:var(--forest);color:var(--cream);overflow-x:hidden;cursor:none;}
+
+/* CURSOR */
+.cursor{width:10px;height:10px;background:var(--orange);border-radius:50%;position:fixed;pointer-events:none;z-index:9999;transition:transform 0.12s;}
+.cursor-ring{width:32px;height:32px;border:2px solid var(--orange);border-radius:50%;position:fixed;pointer-events:none;z-index:9998;opacity:0.4;transition:all 0.1s;}
+
+/* DOODLE BACKGROUND OVERLAY */
+.doodle-bg {
+  position:absolute;inset:0;pointer-events:none;overflow:hidden;opacity:0.07;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Ccircle cx='20' cy='20' r='8' stroke='%23ffffff' stroke-width='1.5' fill='none'/%3E%3Cpath d='M50 15 Q60 5 70 15 Q80 25 70 35 Q60 45 50 35 Q40 25 50 15Z' stroke='%23ffffff' stroke-width='1.5' fill='none'/%3E%3Cpath d='M95 10 L100 20 L110 20 L102 27 L105 37 L95 31 L85 37 L88 27 L80 20 L90 20Z' stroke='%23ffffff' stroke-width='1.5' fill='none'/%3E%3Cpath d='M10 70 L15 60 L25 65 L20 75Z' stroke='%23ffffff' stroke-width='1.5' fill='none'/%3E%3Ccircle cx='85' cy='80' r='5' stroke='%23ffffff' stroke-width='1.5' fill='none'/%3E%3Cpath d='M40 90 Q45 80 50 90 Q55 100 50 110 Q45 120 40 110 Q35 100 40 90' stroke='%23ffffff' stroke-width='1.5' fill='none'/%3E%3Cpath d='M100 60 L105 55 M108 58 L103 63 M108 63 L103 58' stroke='%23ffffff' stroke-width='1.5'/%3E%3Cpath d='M5 45 Q10 40 15 45 Q20 50 15 55 Q10 60 5 55 Q0 50 5 45' stroke='%23ffffff' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+  background-size:120px 120px;
+}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.2rem 4.5rem;
+  background:rgba(13,59,48,0.95);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(255,255,255,0.06);
+  transition:padding 0.3s;
+}
+.nav-brand{display:flex;align-items:center;gap:0.7rem;text-decoration:none;}
+.nav-brand-icon{
+  width:38px;height:38px;
+  background:linear-gradient(135deg,var(--orange),var(--gold));
+  border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.1rem;font-weight:800;color:var(--forest);
+  font-family:'Nunito',sans-serif;
+}
+.nav-brand-text{font-family:'Nunito',sans-serif;font-size:1rem;font-weight:800;color:var(--white);letter-spacing:0.01em;}
+.nav-brand-text span{color:var(--orange);}
+.nav-links{display:flex;gap:2rem;list-style:none;align-items:center;}
+.nav-links a{
+  color:var(--light);text-decoration:none;font-size:0.88rem;font-weight:600;
+  letter-spacing:0.02em;transition:color 0.2s;position:relative;
+}
+.nav-links a:hover{color:var(--white);}
+.nav-links a.active{color:var(--white);}
+.nav-letorea{
+  color:var(--cream)!important;
+  background:rgba(42,138,122,0.2)!important;
+  border:1px solid rgba(42,138,122,0.4)!important;
+  padding:0.4rem 1rem;border-radius:6px;font-size:0.82rem!important;
+}
+.nav-letorea:hover{background:rgba(42,138,122,0.35)!important;color:var(--white)!important;}
+.nav-cta{
+  background:var(--orange)!important;color:var(--white)!important;
+  padding:0.55rem 1.5rem;border-radius:6px;font-weight:700!important;font-size:0.88rem!important;
+  transition:background 0.2s!important;
+}
+.nav-cta:hover{background:var(--orange2)!important;}
+
+/* BUTTONS */
+.btn-orange{display:inline-flex;align-items:center;gap:0.5rem;background:var(--orange);color:var(--white);padding:0.9rem 2rem;font-size:0.95rem;font-weight:700;border-radius:8px;text-decoration:none;cursor:none;transition:background 0.2s,transform 0.2s;font-family:'Nunito Sans',sans-serif;}
+.btn-orange:hover{background:var(--orange2);transform:translateY(-2px);}
+.btn-teal{display:inline-flex;align-items:center;gap:0.5rem;background:var(--teal-btn);color:var(--white);padding:0.9rem 2rem;font-size:0.95rem;font-weight:700;border-radius:8px;text-decoration:none;cursor:none;transition:background 0.2s,transform 0.2s;font-family:'Nunito Sans',sans-serif;}
+.btn-teal:hover{background:var(--teal-light);transform:translateY(-2px);}
+.btn-outline{display:inline-flex;align-items:center;gap:0.5rem;background:transparent;color:var(--white);padding:0.9rem 2rem;font-size:0.95rem;font-weight:700;border-radius:8px;border:2px solid rgba(255,255,255,0.3);text-decoration:none;cursor:none;transition:border-color 0.2s,background 0.2s,transform 0.2s;font-family:'Nunito Sans',sans-serif;}
+.btn-outline:hover{border-color:var(--white);background:rgba(255,255,255,0.08);transform:translateY(-2px);}
+
+/* SECTION COMMON */
+section{padding:6rem 4.5rem;}
+.section-tag{display:inline-block;font-size:0.78rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--orange);margin-bottom:0.8rem;}
+.section-title{font-family:'Nunito',sans-serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:800;line-height:1.15;color:var(--white);margin-bottom:1.2rem;}
+.section-title em{font-style:normal;color:var(--orange);}
+.section-body{font-size:1.05rem;line-height:1.8;color:var(--light);max-width:600px;}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.65s ease,transform 0.65s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── HERO ── */
+#home{
+  min-height:100vh;display:flex;align-items:center;justify-content:center;
+  text-align:center;padding:9rem 4.5rem 5rem;position:relative;overflow:hidden;
+  background:linear-gradient(160deg,var(--forest) 0%,#0a2e25 100%);
+}
+.hero-doodle{position:absolute;inset:0;pointer-events:none;opacity:0.06;}
+.hero-doodle svg{width:100%;height:100%;}
+.hero-content{position:relative;z-index:2;max-width:860px;margin:0 auto;}
+.hero-tag{
+  display:inline-block;font-size:0.82rem;font-weight:700;letter-spacing:0.1em;
+  text-transform:uppercase;color:var(--orange);margin-bottom:1.4rem;
+  opacity:0;animation:fadeUp 0.7s ease 0.2s forwards;
+}
+.hero-h1{
+  font-family:'Nunito',sans-serif;
+  font-size:clamp(3rem,7vw,6rem);font-weight:800;line-height:1.05;
+  color:var(--white);margin-bottom:1.5rem;
+  opacity:0;animation:fadeUp 0.7s ease 0.4s forwards;
+}
+.hero-h1 em{font-style:normal;color:var(--orange);}
+.hero-sub{
+  font-size:1.2rem;font-weight:400;color:var(--light);line-height:1.75;
+  max-width:660px;margin:0 auto 2.5rem;
+  opacity:0;animation:fadeUp 0.7s ease 0.6s forwards;
+}
+.hero-sub strong{color:var(--white);font-weight:700;}
+.hero-chips{
+  display:flex;flex-wrap:wrap;gap:0.6rem;justify-content:center;margin-bottom:2.8rem;
+  opacity:0;animation:fadeUp 0.7s ease 0.75s forwards;
+}
+.chip{font-size:0.8rem;font-weight:600;color:var(--cream2);background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);padding:0.3rem 0.9rem;border-radius:20px;}
+.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;opacity:0;animation:fadeUp 0.7s ease 0.9s forwards;}
+.hero-scroll-hint{
+  position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:0.5rem;
+  opacity:0;animation:fadeUp 0.7s ease 1.3s forwards;
+}
+.scroll-arrow{width:1px;height:40px;background:linear-gradient(to bottom,rgba(255,255,255,0.5),transparent);animation:scrollBob 2s ease infinite;}
+@keyframes scrollBob{0%,100%{opacity:0.4;transform:scaleY(0.8)}50%{opacity:1;transform:scaleY(1)}}
+.scroll-label{font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);}
+
+/* ── ABOUT ── */
+#about{background:var(--forest2);}
+.about-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:5rem;margin-top:3.5rem;align-items:start;}
+.about-quote{
+  font-family:'Nunito',sans-serif;font-size:1.25rem;font-weight:700;font-style:italic;
+  color:var(--cream2);line-height:1.65;
+  border-left:4px solid var(--orange);padding-left:1.4rem;margin:2rem 0;
+}
+.about-stats{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2.5rem;}
+.stat{
+  padding:1.5rem;border-radius:10px;
+  background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);
+  transition:background 0.2s,transform 0.2s;
+}
+.stat:hover{background:rgba(255,255,255,0.08);transform:translateY(-3px);}
+.stat-num{font-family:'Nunito',sans-serif;font-size:2.6rem;font-weight:800;color:var(--orange);line-height:1;}
+.stat-label{font-size:0.82rem;color:var(--muted);margin-top:0.3rem;font-weight:600;}
+.pillar{
+  display:flex;align-items:flex-start;gap:1rem;
+  padding:1rem 1.2rem;margin-bottom:0.7rem;
+  border-radius:8px;background:rgba(255,255,255,0.03);
+  border-left:3px solid var(--orange);
+  transition:background 0.2s;
+}
+.pillar:hover{background:rgba(255,255,255,0.07);}
+.pillar-icon{font-size:1.3rem;flex-shrink:0;}
+.pillar-title{font-size:0.95rem;font-weight:700;color:var(--white);}
+.pillar-sub{font-size:0.8rem;color:var(--muted);margin-top:0.2rem;line-height:1.5;}
+.badge-row{display:flex;flex-direction:column;gap:0.7rem;margin-top:2rem;}
+.badge{
+  display:inline-flex;align-items:center;gap:0.8rem;
+  padding:0.85rem 1.2rem;border-radius:10px;
+  text-decoration:none;transition:background 0.2s;
+}
+.badge-teal{background:rgba(42,138,122,0.15);border:1px solid rgba(42,138,122,0.3);}
+.badge-teal:hover{background:rgba(42,138,122,0.28);}
+.badge-blue{background:rgba(10,102,194,0.12);border:1px solid rgba(10,102,194,0.25);}
+.badge-blue:hover{background:rgba(10,102,194,0.22);}
+.badge-label{font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;}
+.badge-label-teal{color:var(--teal-light);}
+.badge-label-blue{color:#7ab4e8;}
+.badge-name{font-size:0.9rem;color:var(--cream);font-weight:600;margin-top:0.1rem;}
+
+/* ── SERVICES ── */
+#services{background:var(--forest);}
+.services-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3.5rem;gap:2rem;flex-wrap:wrap;}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;}
+.svc{
+  padding:2.2rem 1.8rem;border-radius:12px;
+  background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);
+  position:relative;overflow:hidden;cursor:none;
+  transition:transform 0.3s,background 0.3s,border-color 0.3s;
+}
+.svc::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:3px;
+  background:var(--orange);transform:scaleX(0);transform-origin:left;transition:transform 0.35s;
+}
+.svc:hover{transform:translateY(-5px);background:rgba(255,255,255,0.07);border-color:rgba(240,120,48,0.25);}
+.svc:hover::after{transform:scaleX(1);}
+.svc-icon{font-size:2rem;margin-bottom:1rem;display:block;}
+.svc-num{position:absolute;top:1.2rem;right:1.4rem;font-family:'Nunito',sans-serif;font-size:3.5rem;font-weight:800;color:rgba(240,120,48,0.07);line-height:1;}
+.svc-title{font-family:'Nunito',sans-serif;font-size:1.15rem;font-weight:800;color:var(--white);margin-bottom:0.65rem;}
+.svc-desc{font-size:0.87rem;color:var(--muted);line-height:1.75;}
+.svc-tags{display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:1.2rem;}
+.tag{font-size:0.7rem;font-weight:700;color:var(--teal-light);background:rgba(42,138,122,0.12);border:1px solid rgba(42,138,122,0.2);padding:0.2rem 0.65rem;border-radius:20px;letter-spacing:0.03em;}
+
+/* ── JOURNAL ── */
+#journal{
+  background:linear-gradient(155deg,var(--forest2) 0%,#082820 100%);
+  position:relative;overflow:hidden;
+}
+#journal::before{
+  content:'';position:absolute;top:-300px;right:-200px;
+  width:600px;height:600px;
+  background:radial-gradient(circle,rgba(240,120,48,0.08) 0%,transparent 60%);
+  border-radius:50%;filter:blur(40px);pointer-events:none;
+}
+.journal-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:6rem;align-items:center;}
+/* book */
+.book-wrap{position:relative;display:flex;justify-content:center;}
+.book-glow{position:absolute;width:250px;height:250px;background:radial-gradient(circle,rgba(240,120,48,0.18),transparent 70%);bottom:-60px;left:50%;transform:translateX(-50%);filter:blur(30px);border-radius:50%;}
+.book{
+  width:260px;height:345px;border-radius:4px 14px 14px 4px;position:relative;overflow:hidden;
+  box-shadow:-12px 12px 50px rgba(0,0,0,0.55),0 0 0 1px rgba(240,120,48,0.25);
+  background:linear-gradient(145deg,#faf6f0,#ede8df);
+}
+.book-spine{position:absolute;left:0;top:0;bottom:0;width:20px;background:linear-gradient(180deg,var(--orange) 0%,#b85520 100%);}
+.book-body{padding:2rem 1.5rem 1.5rem 2.6rem;height:100%;display:flex;flex-direction:column;align-items:center;}
+.book-emoji{font-size:3.2rem;margin:0.5rem 0 0.8rem;}
+.book-title{font-family:'Nunito',sans-serif;font-size:1.05rem;font-weight:800;color:#1a2e28;text-align:center;line-height:1.3;}
+.book-rule{width:36px;height:2px;background:var(--orange);margin:0.8rem auto;border-radius:1px;}
+.book-sub{font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--orange);text-align:center;}
+.book-meta{font-size:0.72rem;color:#7a6a5a;text-align:center;margin-top:0.5rem;line-height:1.5;}
+.book-author{font-family:'Nunito',sans-serif;font-size:0.8rem;font-style:italic;color:#5a4a3a;text-align:center;margin-top:auto;padding-top:0.5rem;}
+/* journal content */
+.journal-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0.8rem;margin:1.8rem 0;}
+.jstat{padding:1rem;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:8px;text-align:center;transition:background 0.2s;}
+.jstat:hover{background:rgba(255,255,255,0.08);}
+.jstat-num{font-family:'Nunito',sans-serif;font-size:1.5rem;font-weight:800;color:var(--orange);}
+.jstat-label{font-size:0.72rem;font-weight:600;color:var(--muted);margin-top:0.2rem;line-height:1.35;}
+.prompts-label{font-size:0.78rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal-light);margin:1.5rem 0 0.8rem;}
+.prompt-pills{display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:2rem;}
+.ppill{display:inline-block;padding:0.35rem 1rem;background:rgba(240,120,48,0.1);border:1px solid rgba(240,120,48,0.2);border-radius:20px;font-size:0.78rem;color:var(--cream2);font-style:italic;}
+.journal-btns{display:flex;gap:1rem;flex-wrap:wrap;}
+
+/* ── NEWSLETTER ── */
+#newsletter{background:var(--forest2);}
+.newsletter-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
+.newsletter-topics{display:flex;flex-direction:column;gap:0.9rem;margin-top:1rem;}
+.ntopic{
+  display:flex;align-items:flex-start;gap:1rem;
+  padding:1.2rem 1.3rem;border-radius:10px;
+  background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);
+  transition:background 0.2s;
+}
+.ntopic:hover{background:rgba(255,255,255,0.08);}
+.ntopic-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;margin-top:0.3rem;}
+.ntopic-title{font-size:0.92rem;font-weight:700;color:var(--white);margin-bottom:0.3rem;}
+.ntopic-desc{font-size:0.83rem;color:var(--muted);line-height:1.6;}
+.li-subscribe{
+  display:inline-flex;align-items:center;gap:0.8rem;
+  background:#0A66C2;color:#fff;padding:0.9rem 2rem;
+  font-size:0.92rem;font-weight:700;border-radius:8px;
+  text-decoration:none;cursor:none;
+  transition:background 0.2s,transform 0.2s;
+  font-family:'Nunito Sans',sans-serif;margin-top:2rem;
+}
+.li-subscribe:hover{background:#0850a0;transform:translateY(-2px);}
+
+/* ── IMPACT ── */
+#impact{background:var(--forest);}
+.impact-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-top:3.5rem;}
+.icard{
+  padding:2rem;border-radius:12px;
+  background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);
+  transition:transform 0.3s,background 0.3s;
+}
+.icard:hover{transform:translateY(-4px);background:rgba(255,255,255,0.07);}
+.icard.wide{grid-column:span 2;background:rgba(240,120,48,0.06);border-color:rgba(240,120,48,0.2);}
+.icard-area{font-size:0.7rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--teal-light);margin-bottom:0.7rem;}
+.icard-title{font-family:'Nunito',sans-serif;font-size:1.25rem;font-weight:800;color:var(--white);margin-bottom:0.6rem;line-height:1.3;}
+.icard-desc{font-size:0.87rem;color:var(--muted);line-height:1.75;}
+.icard-nums{display:flex;gap:2.5rem;margin-top:1.3rem;padding-top:1.3rem;border-top:1px solid rgba(255,255,255,0.07);}
+.inum-n{font-family:'Nunito',sans-serif;font-size:1.8rem;font-weight:800;color:var(--orange);}
+.inum-l{font-size:0.73rem;color:var(--muted);font-weight:600;}
+
+/* ── TESTIMONIALS ── */
+#testimonials{background:var(--forest2);}
+.tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:3.5rem;}
+.tcard{
+  padding:1.8rem;border-radius:12px;
+  background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);
+  transition:transform 0.3s;
+}
+.tcard:hover{transform:translateY(-4px);}
+.qmark{font-family:'Nunito',sans-serif;font-size:4rem;font-weight:800;color:rgba(240,120,48,0.2);line-height:0.85;margin-bottom:0.8rem;}
+.ttext{font-size:0.92rem;line-height:1.78;color:var(--light);font-style:italic;margin-bottom:1.3rem;}
+.tauthor{display:flex;align-items:center;gap:0.8rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.07);}
+.tavatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--teal),var(--orange));display:flex;align-items:center;justify-content:center;font-family:'Nunito',sans-serif;font-size:1rem;font-weight:800;color:var(--white);flex-shrink:0;}
+.tname{font-size:0.88rem;font-weight:700;color:var(--white);}
+.trole{font-size:0.76rem;color:var(--muted);margin-top:0.1rem;}
+
+/* ── CONTACT ── */
+#contact{
+  background:linear-gradient(160deg,var(--forest) 0%,#091e18 100%);
+  text-align:center;position:relative;overflow:hidden;
+}
+#contact .doodle-bg{opacity:0.04;}
+.contact-inner{position:relative;z-index:1;max-width:620px;margin:0 auto;}
+.contact-email{
+  font-family:'Nunito',sans-serif;font-size:1.3rem;font-weight:700;
+  color:var(--orange);margin:1.5rem 0 2rem;display:block;
+  text-decoration:none;transition:color 0.2s;
+}
+.contact-email:hover{color:var(--orange2);}
+.contact-links{display:flex;flex-wrap:wrap;gap:0.9rem;justify-content:center;margin-top:2rem;}
+.contact-link{
+  display:flex;align-items:center;gap:0.6rem;
+  padding:0.75rem 1.4rem;border-radius:8px;
+  background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);
+  color:var(--light);text-decoration:none;font-size:0.85rem;font-weight:700;
+  transition:all 0.2s;
+}
+.contact-link:hover{background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.2);color:var(--white);transform:translateY(-2px);}
+
+/* ── FOOTER ── */
+footer{
+  background:#060f0c;padding:2rem 4.5rem;
+  display:flex;align-items:center;justify-content:space-between;
+  border-top:1px solid rgba(255,255,255,0.06);flex-wrap:wrap;gap:1rem;
+}
+.footer-brand{display:flex;align-items:center;gap:0.6rem;text-decoration:none;}
+.footer-icon{width:30px;height:30px;background:linear-gradient(135deg,var(--orange),var(--gold));border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:0.85rem;font-weight:800;color:var(--forest);font-family:'Nunito',sans-serif;}
+.footer-name{font-family:'Nunito',sans-serif;font-size:0.95rem;font-weight:800;color:var(--white);}
+.footer-name span{color:var(--orange);}
+.footer-letorea{
+  display:flex;align-items:center;gap:0.5rem;
+  text-decoration:none;color:var(--teal-light);
+  font-size:0.78rem;font-weight:700;letter-spacing:0.06em;
+  transition:color 0.2s;
+}
+.footer-letorea:hover{color:var(--cream2);}
+.footer-copy{font-size:0.75rem;color:var(--muted);}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  nav{padding:1rem 2rem;}
+  section{padding:5rem 2rem;}
+  footer{padding:1.5rem 2rem;}
+  .about-grid,.journal-grid,.newsletter-grid{grid-template-columns:1fr;gap:3rem;}
+  .services-grid{grid-template-columns:1fr 1fr;}
+  .tgrid{grid-template-columns:1fr;}
+  .hero-h1{font-size:clamp(2.5rem,8vw,4.5rem);}
+}
+@media(max-width:640px){
+  .services-grid,.impact-grid{grid-template-columns:1fr;}
+  .icard.wide{grid-column:span 1;}
+  .hero-btns,.journal-btns,.contact-links{flex-direction:column;align-items:center;}
+  .nav-links{display:none;}
+  .journal-stats{grid-template-columns:1fr 1fr;}
+}
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cring"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#home" class="nav-brand">
+    <div class="nav-brand-icon">S</div>
+    <div class="nav-brand-text">Suliat <span>Sulaiman</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#journal">Journal</a></li>
+    <li><a href="#newsletter">Newsletter</a></li>
+    <li><a href="#impact">Impact</a></li>
+    <li><a href="#testimonials">Testimonials</a></li>
+    <li><a href="https://www.letorealearninghub.com" target="_blank" class="nav-letorea">🌿 Letorea Hub</a></li>
+    <li><a href="#contact" class="nav-cta">Work With Me</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <div class="doodle-bg"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Your Growth Starts Here.</div>
+    <h1 class="hero-h1">Suliat <em>Sulaiman</em><br>Educator · Coach · Changemaker</h1>
+    <p class="hero-sub">I help <strong>professionals, students, and organisations</strong> grow through education, intentional coaching, and thinking that actually changes things.</p>
+    <div class="hero-chips">
+      <span class="chip">IELTS Coach</span>
+      <span class="chip">Mindset Coach</span>
+      <span class="chip">Nonprofit Leader</span>
+      <span class="chip">Content Strategist</span>
+      <span class="chip">Speaker</span>
+      <span class="chip">Author</span>
+      <span class="chip">Mentor @ Letorea</span>
+    </div>
+    <div class="hero-btns">
+      <a href="#services" class="btn-orange">Explore My Work</a>
+      <a href="#journal" class="btn-teal">Get the Journal</a>
+      <a href="#contact" class="btn-outline">Work With Me</a>
+    </div>
+  </div>
+  <div class="hero-scroll-hint">
+    <div class="scroll-arrow"></div>
+    <span class="scroll-label">Scroll</span>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="reveal">
+    <div class="section-tag">About Me</div>
+    <h2 class="section-title">I don't fit <em>one box.</em><br>I never have.</h2>
+  </div>
+  <div class="about-grid">
+    <div class="reveal">
+      <p class="section-body">With over a decade of experience across IELTS coaching, learning program design, nonprofit leadership, and personal development, I've built a career around one core belief: <strong style="color:var(--white)">people grow when given the right tools, the right environment, and someone who genuinely believes in their capacity.</strong></p>
+      <blockquote class="about-quote">"My foundation is sociology — the study of how people, systems, and societies interact. That lens shapes everything I do."</blockquote>
+      <p class="section-body">I combine sociological insight with a coach's empathy and a writer's clarity. Whether working with an IELTS candidate, a nonprofit team, or a professional navigating a life transition — I bring the same rigour, warmth, and commitment to results.</p>
+      <div class="badge-row">
+        <a href="https://www.letorealearninghub.com" target="_blank" class="badge badge-teal">
+          <span style="font-size:1.3rem">🌿</span>
+          <div>
+            <div class="badge-label badge-label-teal">Mentor &amp; Contributor at</div>
+            <div class="badge-name">Letorea Learning Hub →</div>
+          </div>
+        </a>
+        <a href="https://www.linkedin.com/build-relation/newsletter-follow?entityUrn=7405199510487941120" target="_blank" class="badge badge-blue">
+          <span style="font-size:1.3rem">📩</span>
+          <div>
+            <div class="badge-label badge-label-blue">LinkedIn Newsletter</div>
+            <div class="badge-name">The Fluent Edge →</div>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="about-stats">
+        <div class="stat"><div class="stat-num">10+</div><div class="stat-label">Years of experience</div></div>
+        <div class="stat"><div class="stat-num">20+</div><div class="stat-label">IELTS clients coached</div></div>
+        <div class="stat"><div class="stat-num">129</div><div class="stat-label">Pages in the journal</div></div>
+        <div class="stat"><div class="stat-num">100</div><div class="stat-label">Daily reflection prompts</div></div>
+      </div>
+      <div style="margin-top:2.2rem">
+        <div class="pillar"><div class="pillar-icon">🔬</div><div><div class="pillar-title">Sociological Insight</div><div class="pillar-sub">Deep understanding of human behaviour, systems, and social patterns</div></div></div>
+        <div class="pillar"><div class="pillar-icon">✍️</div><div><div class="pillar-title">Writer's Clarity</div><div class="pillar-sub">Complex ideas made simple, honest, and impossible to ignore</div></div></div>
+        <div class="pillar"><div class="pillar-icon">🎯</div><div><div class="pillar-title">Coach's Precision</div><div class="pillar-sub">Personalised strategies built around your specific goals</div></div></div>
+        <div class="pillar"><div class="pillar-icon">🧠</div><div><div class="pillar-title">Mindset First</div><div class="pillar-sub">Because lasting results start with how we think</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="services-header reveal">
+    <div>
+      <div class="section-tag">What I Do</div>
+      <h2 class="section-title">Services built for <em>real growth.</em></h2>
+    </div>
+    <p class="section-body" style="max-width:340px;font-size:0.95rem">Everything I offer is personalised, purposeful, and designed to create lasting change — not just short-term results.</p>
+  </div>
+  <div class="services-grid">
+    <div class="svc reveal"><span class="svc-num">01</span><span class="svc-icon">📚</span><div class="svc-title">IELTS Coaching</div><p class="svc-desc">Personalised preparation using my 4-step Gauge–Access–Practice–Sharpen framework. No generic prep — we work from your specific baseline to your exact target band.</p><div class="svc-tags"><span class="tag">Band 7+</span><span class="tag">All 4 Skills</span><span class="tag">Remote</span></div></div>
+    <div class="svc reveal"><span class="svc-num">02</span><span class="svc-icon">🧠</span><div class="svc-title">Mindset & Personal Development</div><p class="svc-desc">1:1 coaching for professionals ready to live and work with intention. Self-awareness, values clarity, mindset shifts, and sustainable systems for a life that actually belongs to you.</p><div class="svc-tags"><span class="tag">1:1 Coaching</span><span class="tag">Values Work</span></div></div>
+    <div class="svc reveal"><span class="svc-num">03</span><span class="svc-icon">🌍</span><div class="svc-title">Nonprofit & Social Impact</div><p class="svc-desc">Strategic consulting for nonprofits and community organisations ready to move from good intentions to sustainable impact. Rooted in sociology, shaped by real-world leadership.</p><div class="svc-tags"><span class="tag">Strategy</span><span class="tag">Community</span></div></div>
+    <div class="svc reveal"><span class="svc-num">04</span><span class="svc-icon">✍️</span><div class="svc-title">Writing & Content Strategy</div><p class="svc-desc">From thought leadership to full content strategies, I help professionals find their voice, clarify their message, and show up consistently — starting with LinkedIn.</p><div class="svc-tags"><span class="tag">LinkedIn</span><span class="tag">Ghostwriting</span></div></div>
+    <div class="svc reveal"><span class="svc-num">05</span><span class="svc-icon">🎤</span><div class="svc-title">Speaking & Training</div><p class="svc-desc">Keynotes and workshops on mindset, personal development, education equity, and social impact. Available for corporate events, conferences, and community programmes.</p><div class="svc-tags"><span class="tag">Keynotes</span><span class="tag">Workshops</span></div></div>
+    <div class="svc reveal" style="border-color:rgba(240,120,48,0.2);background:rgba(240,120,48,0.04)"><span class="svc-num">06</span><span class="svc-icon">📖</span><div class="svc-title">Learning Program Design</div><p class="svc-desc">Curriculum and learning program design for organisations that want education that actually works — built on adult learning principles and designed for real-world outcomes.</p><div class="svc-tags"><span class="tag">Curriculum</span><span class="tag">L&D</span></div></div>
+  </div>
+</section>
+
+<!-- JOURNAL -->
+<section id="journal">
+  <div class="journal-grid">
+    <div class="book-wrap reveal">
+      <div class="book-glow"></div>
+      <div class="book">
+        <div class="book-spine"></div>
+        <div class="book-body">
+          <div class="book-emoji">🌅</div>
+          <div class="book-title">Rediscovering<br>Your True Self</div>
+          <div class="book-rule"></div>
+          <div class="book-sub">A Self-Awareness Journal</div>
+          <div class="book-meta">A guide to knowing yourself<br>more deeply through daily reflection</div>
+          <div style="font-size:0.7rem;color:#9a8a7a;text-align:center;margin-top:0.5rem">129 pages · 100 daily prompts</div>
+          <div class="book-author">Compiled by Suliat Sulaiman</div>
+        </div>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="section-tag">Featured Resource</div>
+      <h2 class="section-title">For the person who has <em>drifted</em> — and is ready to return.</h2>
+      <p class="section-body">Most people spend years performing a version of themselves they never consciously chose. This 129-page journal is a private space to stop, look inward, and find your way back — through daily reflection that is honest, structured, and deeply humane.</p>
+      <div class="journal-stats">
+        <div class="jstat"><div class="jstat-num">100</div><div class="jstat-label">Daily Prompts</div></div>
+        <div class="jstat"><div class="jstat-num">129</div><div class="jstat-label">Pages</div></div>
+        <div class="jstat"><div class="jstat-num">8</div><div class="jstat-label">Themes</div></div>
+        <div class="jstat"><div class="jstat-num">10</div><div class="jstat-label">Min/Day</div></div>
+      </div>
+      <div class="prompts-label">Sample prompts inside</div>
+      <div class="prompt-pills">
+        <span class="ppill">"What am I most afraid to hope for?"</span>
+        <span class="ppill">"What patterns keep repeating in my life?"</span>
+        <span class="ppill">"What am I doing out of habit rather than choice?"</span>
+        <span class="ppill">"What would I do if I knew I couldn't fail?"</span>
+      </div>
+      <div class="journal-btns">
+        <a href="https://selar.com/64yf64yce0" target="_blank" class="btn-orange">Get the Journal →</a>
+        <a href="#contact" class="btn-outline">Ask Me About It</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section id="newsletter">
+  <div class="newsletter-grid">
+    <div class="reveal">
+      <div class="section-tag">LinkedIn Newsletter</div>
+      <h2 class="section-title">The <em>Fluent Edge</em></h2>
+      <p class="section-body" style="margin-bottom:1.5rem">A newsletter for professionals who want to communicate with more clarity, confidence, and impact — whether in English, in the boardroom, or in life.</p>
+      <p class="section-body">Every edition blends language coaching, mindset insights, and real strategies you can use immediately. Published on LinkedIn. No fluff. No filler.</p>
+      <a href="https://www.linkedin.com/build-relation/newsletter-follow?entityUrn=7405199510487941120" target="_blank" class="li-subscribe">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        Subscribe on LinkedIn
+      </a>
+    </div>
+    <div class="reveal">
+      <div class="newsletter-topics">
+        <div class="ntopic">
+          <div class="ntopic-dot" style="background:#5b9bd5"></div>
+          <div><div class="ntopic-title">Language &amp; Communication</div><div class="ntopic-desc">IELTS insights, English fluency tips, and communication strategies that work in real professional contexts — not just in the classroom.</div></div>
+        </div>
+        <div class="ntopic">
+          <div class="ntopic-dot" style="background:var(--orange)"></div>
+          <div><div class="ntopic-title">Mindset &amp; Personal Growth</div><div class="ntopic-desc">Ideas on intentional living, self-awareness, and building a life that actually belongs to you — not the version others expect.</div></div>
+        </div>
+        <div class="ntopic">
+          <div class="ntopic-dot" style="background:var(--teal-light)"></div>
+          <div><div class="ntopic-title">Education &amp; Social Impact</div><div class="ntopic-desc">Reflections on teaching, learning design, community, and the role education plays in building a more equitable world.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IMPACT -->
+<section id="impact">
+  <div class="reveal">
+    <div class="section-tag">Work &amp; Impact</div>
+    <h2 class="section-title">Where the work has made a <em>difference.</em></h2>
+    <p class="section-body">Across education, community, and personal development — here's what it looks like in practice.</p>
+  </div>
+  <div class="impact-grid">
+    <div class="icard wide reveal">
+      <div class="icard-area">IELTS Coaching · Education</div>
+      <div class="icard-title">20+ Professionals Cleared IELTS Using the GAPS Framework</div>
+      <p class="icard-desc">Using a personalised 4-step diagnostic methodology — Gauge, Access, Practice, Sharpen — I've helped over 20 professionals achieve their target band scores for immigration, higher education, and career advancement. Every student receives a bespoke study plan built around exactly where they are and where they need to be.</p>
+      <div class="icard-nums">
+        <div><div class="inum-n">20+</div><div class="inum-l">Clients coached</div></div>
+        <div><div class="inum-n">7.0+</div><div class="inum-l">Avg. band score achieved</div></div>
+        <div><div class="inum-n">90</div><div class="inum-l">Days avg. coaching window</div></div>
+      </div>
+    </div>
+    <div class="icard reveal"><div class="icard-area">Nonprofit · Social Impact</div><div class="icard-title">Community Mobilisation &amp; Charity Leadership</div><p class="icard-desc">Led charity initiatives that mobilised real community action, bringing a sociology-informed approach to programme design — participatory, sustainable, and community-led rather than top-down.</p></div>
+    <div class="icard reveal"><div class="icard-area">Personal Development · Coaching</div><div class="icard-title">Mindset Coaching for Intentional Living</div><p class="icard-desc">Worked 1:1 with professionals navigating career transitions, personal growth, and the challenge of living with intention. Rooted in self-awareness, values work, and sustainable habit design.</p></div>
+    <div class="icard reveal"><div class="icard-area">Learning Design · Education</div><div class="icard-title">Transformative Learning Programs</div><p class="icard-desc">Designed and delivered learning programs that go beyond knowledge transfer — building confidence, skills, and the mindset needed to apply learning in the real world.</p></div>
+    <div class="icard reveal"><div class="icard-area">Writing · Publishing</div><div class="icard-title">Author — Rediscovering Your True Self</div><p class="icard-desc">Compiled and published a 129-page self-awareness journal with 100 daily reflection prompts and thematic frameworks to help people know themselves more deeply.</p></div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="reveal">
+    <div class="section-tag">Testimonials</div>
+    <h2 class="section-title">What people <em>say.</em></h2>
+    <p class="section-body">The measure of the work is the people it changes.</p>
+  </div>
+  <div class="tgrid">
+    <div class="tcard reveal"><div class="qmark">"</div><p class="ttext">Working with Suliat completely changed my approach to the IELTS exam. She didn't just teach me — she built a system around exactly where I was struggling. I went from 6.0 to 7.5 in under three months.</p><div class="tauthor"><div class="tavatar">A</div><div><div class="tname">IELTS Candidate</div><div class="trole">Relocated to Canada · Band 7.5</div></div></div></div>
+    <div class="tcard reveal"><div class="qmark">"</div><p class="ttext">Suliat has this rare ability to ask the exact question that cracks something open. The mindset coaching sessions helped me realise I had been living someone else's definition of success for years.</p><div class="tauthor"><div class="tavatar">T</div><div><div class="tname">Professional Client</div><div class="trole">Personal Development Coaching</div></div></div></div>
+    <div class="tcard reveal"><div class="qmark">"</div><p class="ttext">The learning program Suliat designed for our organisation was unlike anything we'd used before. It was practical, people-centred, and the results spoke for themselves.</p><div class="tauthor"><div class="tavatar">O</div><div><div class="tname">Organisation Lead</div><div class="trole">Learning Program Design</div></div></div></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="doodle-bg"></div>
+  <div class="contact-inner reveal">
+    <div class="section-tag">Get In Touch</div>
+    <h2 class="section-title">Ready to grow <em>on purpose?</em></h2>
+    <p class="section-body" style="margin:0 auto 1rem;text-align:center">Whether you're preparing for IELTS, building a more intentional life, or looking for a speaker for your next event — I'd love to connect.</p>
+    <a href="mailto:suliatsulaiman@gmail.com" class="contact-email">suliatsulaiman@gmail.com</a>
+    <a href="mailto:suliatsulaiman@gmail.com" class="btn-orange" style="margin:0 auto">Send a Message</a>
+    <div class="contact-links">
+      <a href="https://www.linkedin.com/in/suliat-sulaiman/" target="_blank" class="contact-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        LinkedIn
+      </a>
+      <a href="https://selar.com/64yf64yce0" target="_blank" class="contact-link">📖 Get the Journal</a>
+      <a href="https://www.linkedin.com/build-relation/newsletter-follow?entityUrn=7405199510487941120" target="_blank" class="contact-link">📩 The Fluent Edge</a>
+      <a href="https://www.letorealearninghub.com" target="_blank" class="contact-link">🌿 Letorea Learning Hub</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="#home" class="footer-brand">
+    <div class="footer-icon">S</div>
+    <div class="footer-name">Suliat <span>Sulaiman</span></div>
+  </a>
+  <a href="https://www.letorealearninghub.com" target="_blank" class="footer-letorea">
+    🌿 Also visit Letorea Learning Hub
+  </a>
+  <div class="footer-copy">© 2026 Suliat Sulaiman. All rights reserved.</div>
+</footer>
+
+<script>
+// Cursor
+const cur=document.getElementById('cursor'),cring=document.getElementById('cring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx-5+'px';cur.style.top=my-5+'px';});
+(function a(){rx+=(mx-rx)*0.1;ry+=(my-ry)*0.1;cring.style.left=rx-16+'px';cring.style.top=ry-16+'px';requestAnimationFrame(a);})();
+document.querySelectorAll('a,button').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cur.style.transform='scale(2.5)';cring.style.transform='scale(1.5)';cring.style.opacity='0.65';});
+  el.addEventListener('mouseleave',()=>{cur.style.transform='scale(1)';cring.style.transform='scale(1)';cring.style.opacity='0.4';});
+});
+// Scroll reveal
+const obs=new IntersectionObserver(entries=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*80);obs.unobserve(e.target);}});},{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+// Nav shrink
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>{nav.style.padding=window.scrollY>60?'0.8rem 4.5rem':'1.2rem 4.5rem';});
+// Active nav highlight
+const secs=document.querySelectorAll('section[id]');
+window.addEventListener('scroll',()=>{
+  let cur2='';
+  secs.forEach(s=>{if(window.scrollY>=s.offsetTop-120)cur2=s.id;});
+  document.querySelectorAll('.nav-links a').forEach(a=>{
+    a.style.color=a.getAttribute('href')==='#'+cur2?'var(--white)':'';
+  });
+});
+</script>
+</body>
+</html>
